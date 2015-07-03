@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="F:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="F:\Torkqd\app\build\intermediates\pre-dexed\release\internal_impl-21.0.3-f0ad800ca56a45cab67ffd509faad36178faa0a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\KTA-PC 21\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\Torkqd\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-65b57d7584255cc8c4138702e94c90b3efd9e10e.jar" />
+    </item>
+    <item
+        jar="D:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\Torkqd\app\build\intermediates\pre-dexed\debug\classes-db456c3adc7d128634be7852dce51f4fcbf60631.jar" />
+    </item>
+    <item
+        jar="F:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="F:\Torkqd\app\build\intermediates\pre-dexed\release\classes-4f8b11b55cce6cf4656d6bd7b9a153bae2e173b5.jar" />
+    </item>
+    <item
+        jar="F:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="F:\Torkqd\app\build\intermediates\pre-dexed\release\classes-548652b1c9bdf0f6aa1ca2a02d811be53c45167c.jar" />
+    </item>
+    <item
+        jar="D:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="D:\Torkqd\app\build\intermediates\pre-dexed\debug\classes-0a60bad8e69f703211d806fd978b03bb4173eb5c.jar" />
+    </item>
+    <item
+        jar="G:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="G:\Torkqd\app\build\intermediates\pre-dexed\debug\classes-b2679328cba6d0489a1027b18117d715b902ff58.jar" />
+    </item>
+    <item
+        jar="G:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="G:\Torkqd\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-5d5cd6c3241530e421fa1348278cbd3fbc2a2579.jar" />
+    </item>
+    <item
+        jar="G:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="G:\Torkqd\app\build\intermediates\pre-dexed\debug\classes-29a68a8552aa249e5246ef20bf3de310d244d69f.jar" />
+    </item>
+    <item
+        jar="D:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\Torkqd\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-a0db1d19e644ab4879b0b383b72498053f7e2fc7.jar" />
+    </item>
+
+</items>

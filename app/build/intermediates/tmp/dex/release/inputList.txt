@@ -1,0 +1,5 @@
+F:\Torkqd\app\build\intermediates\classes\release
+F:\Torkqd\app\build\intermediates\pre-dexed\release\support-annotations-21.0.3-65b57d7584255cc8c4138702e94c90b3efd9e10e.jar
+F:\Torkqd\app\build\intermediates\pre-dexed\release\internal_impl-21.0.3-f0ad800ca56a45cab67ffd509faad36178faa0a5.jar
+F:\Torkqd\app\build\intermediates\pre-dexed\release\classes-548652b1c9bdf0f6aa1ca2a02d811be53c45167c.jar
+F:\Torkqd\app\build\intermediates\pre-dexed\release\classes-4f8b11b55cce6cf4656d6bd7b9a153bae2e173b5.jar
