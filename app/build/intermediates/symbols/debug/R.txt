@@ -347,11 +347,12 @@ int id action_menu_presenter 0x7f080003
 int id action_mode_bar 0x7f08002e
 int id action_mode_bar_stub 0x7f08002d
 int id action_mode_close_button 0x7f080020
-int id action_settings 0x7f080041
+int id action_settings 0x7f080042
 int id activity_chooser_view_content 0x7f080021
 int id always 0x7f080016
 int id beginning 0x7f080013
-int id btnCapture 0x7f080040
+int id btnCapture 0x7f080041
+int id button 0x7f08003f
 int id checkbox 0x7f080029
 int id collapseActionView 0x7f080017
 int id decor_content_parent 0x7f08002f
@@ -397,7 +398,7 @@ int id tabMode 0x7f08000b
 int id title 0x7f080027
 int id up 0x7f080008
 int id useLogo 0x7f080012
-int id webView1 0x7f08003f
+int id webView1 0x7f080040
 int id withText 0x7f08001a
 int id wrap_content 0x7f08001d
 int integer abc_max_action_buttons 0x7f090000
@@ -446,7 +447,8 @@ int string abc_shareactionprovider_share_with_application 0x7f0a000e
 int string abc_toolbar_collapse_description 0x7f0a000f
 int string action_settings 0x7f0a0010
 int string app_name 0x7f0a0011
-int string hello_world 0x7f0a0012
+int string button_send 0x7f0a0012
+int string hello_world 0x7f0a0013
 int style AppBaseTheme 0x7f0b0000
 int style AppTheme 0x7f0b0001
 int style Base_TextAppearance_AppCompat 0x7f0b0002

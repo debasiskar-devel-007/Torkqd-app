@@ -1,12 +1,8 @@
 package com.torkqd;
 
-import java.lang.reflect.Method;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
@@ -17,13 +13,15 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.Window;
 import android.webkit.GeolocationPermissions;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
-import android.widget.TextView;
+
+import java.lang.reflect.Method;
 
 public class MainActivity extends Activity implements LocationListener {
 
@@ -97,6 +95,13 @@ public class MainActivity extends Activity implements LocationListener {
 			launchWebview();
 		}
 	}
+
+
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, cameraActivity.class);
+
+        startActivity(intent);
+    }
 
     public void onLocationChanged(Location location) {
 

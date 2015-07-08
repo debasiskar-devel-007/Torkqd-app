@@ -50,9 +50,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.torkqd.cameraActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
     </application>
 

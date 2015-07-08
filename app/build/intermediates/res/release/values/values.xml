@@ -163,6 +163,7 @@
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">Torkqd</string>
+    <string name="button_send">button_send</string>
     <string name="hello_world">Hello world!</string>
     <!-- From: file:/F:/Torkqd/app/src/main/res/values/styles.xml -->
     <eat-comment/>
