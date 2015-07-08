@@ -15,6 +15,7 @@ public class WebAppInterface extends MainActivity  {
     public static int count=0;
     private WebView myWebView;
 
+
     /** Instantiate the interface and set the context */
     WebAppInterface(Context c) {
         mContext = c;

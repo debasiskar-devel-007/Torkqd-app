@@ -15,13 +15,17 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TableLayout;
 
 public class WebViewController extends WebViewClient {
 
     private static final String LOG_TAG = "test";
     ProgressDialog progressDialog;
     private WebView myWebView;
-    private Button btn;
+    private Button btn,btn1;
+    private TableLayout tbale;
+    private ImageView imgv;
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -30,9 +34,15 @@ public class WebViewController extends WebViewClient {
         {
 
             myWebView = (WebView) view.findViewById(R.id.webView1);
-            btn = (Button) view.findViewById(R.id.button);
+            btn = (Button) view.findViewById(R.id.imgcancelbtn);
+            btn1 = (Button) view.findViewById(R.id.imguploadbtn);
+            tbale = (TableLayout) view.findViewById(R.id.tablel);
+            imgv = (ImageView) view.findViewById(R.id.ImageView);
             myWebView.setVisibility(View.INVISIBLE);
             btn.setVisibility(View.VISIBLE);
+            btn1.setVisibility(View.VISIBLE);
+            tbale.setVisibility(View.VISIBLE);
+            imgv.setVisibility(View.VISIBLE);
 
             return true ;
 
