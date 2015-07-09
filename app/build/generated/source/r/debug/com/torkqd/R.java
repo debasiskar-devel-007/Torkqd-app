@@ -1302,7 +1302,6 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020033;
     }
     public static final class id {
-        public static final int ImageView=0x7f08003f;
         public static final int action_bar=0x7f080031;
         public static final int action_bar_activity_content=0x7f080000;
         public static final int action_bar_container=0x7f080030;
@@ -1316,11 +1315,10 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f08002e;
         public static final int action_mode_bar_stub=0x7f08002d;
         public static final int action_mode_close_button=0x7f080020;
-        public static final int action_settings=0x7f080045;
+        public static final int action_settings=0x7f080043;
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
         public static final int beginning=0x7f080013;
-        public static final int btnCapture=0x7f080044;
         public static final int checkbox=0x7f080029;
         public static final int collapseActionView=0x7f080017;
         public static final int decor_content_parent=0x7f08002f;
@@ -1337,8 +1335,8 @@ containing a value of this type.
         public static final int icon=0x7f080026;
         public static final int ifRoom=0x7f080018;
         public static final int image=0x7f080023;
-        public static final int imgcancelbtn=0x7f080042;
-        public static final int imguploadbtn=0x7f080041;
+        public static final int imageview=0x7f080042;
+        public static final int linear_layout=0x7f080040;
         public static final int listMode=0x7f080009;
         public static final int list_item=0x7f080025;
         public static final int middle=0x7f080015;
@@ -1365,11 +1363,11 @@ containing a value of this type.
         public static final int split_action_bar=0x7f080007;
         public static final int submit_area=0x7f08003c;
         public static final int tabMode=0x7f08000b;
-        public static final int tablel=0x7f080040;
+        public static final int take_photo=0x7f080041;
         public static final int title=0x7f080027;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;
-        public static final int webView1=0x7f080043;
+        public static final int webView1=0x7f08003f;
         public static final int withText=0x7f08001a;
         public static final int wrap_content=0x7f08001d;
     }
@@ -1428,6 +1426,7 @@ containing a value of this type.
         public static final int app_name=0x7f0a0011;
         public static final int button_send=0x7f0a0012;
         public static final int hello_world=0x7f0a0013;
+        public static final int uploaded=0x7f0a0014;
     }
     public static final class style {
         /** 

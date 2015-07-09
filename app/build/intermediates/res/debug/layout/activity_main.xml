@@ -4,49 +4,16 @@
     android:layout_height="match_parent"
     tools:context="com.torkqd.MainActivity" >
 
-    <ImageView
-        android:id="@+id/ImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_centerInParent="true"
-        android:src="@android:drawable/alert_dark_frame" />
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:id="@+id/tablel"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#808080"
-        android:visibility="invisible"
-        android:orientation="horizontal"
-        android:stretchColumns="*" >
-
-        <TableRow>
-
-            <Button
-                android:id="@+id/imguploadbtn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                android:layout_margin="5dip"
-                android:text="Upload" />
-
-            <Button
-                android:id="@+id/imgcancelbtn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dip"
-                android:visibility="invisible"
-                android:text="Cancel" />
-        </TableRow>
-    </TableLayout>
 
     <WebView
         android:id="@+id/webView1"
         android:layout_width="match_parent"
+        android:scaleType="fitCenter"
         android:layout_height="match_parent"
         android:onClick="sendMessage"
         android:layout_alignParentTop="true" />
+
+
 
 </RelativeLayout><!-- From: file:/F:/Torkqd/app/src/main/res/layout/activity_main.xml -->

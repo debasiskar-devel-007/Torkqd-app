@@ -334,7 +334,6 @@ int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020030
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020031
 int drawable abc_textfield_search_material 0x7f020032
 int drawable ic_launcher 0x7f020033
-int id ImageView 0x7f08003f
 int id action_bar 0x7f080031
 int id action_bar_activity_content 0x7f080000
 int id action_bar_container 0x7f080030
@@ -348,11 +347,10 @@ int id action_menu_presenter 0x7f080003
 int id action_mode_bar 0x7f08002e
 int id action_mode_bar_stub 0x7f08002d
 int id action_mode_close_button 0x7f080020
-int id action_settings 0x7f080045
+int id action_settings 0x7f080043
 int id activity_chooser_view_content 0x7f080021
 int id always 0x7f080016
 int id beginning 0x7f080013
-int id btnCapture 0x7f080044
 int id checkbox 0x7f080029
 int id collapseActionView 0x7f080017
 int id decor_content_parent 0x7f08002f
@@ -369,8 +367,8 @@ int id homeAsUp 0x7f08000d
 int id icon 0x7f080026
 int id ifRoom 0x7f080018
 int id image 0x7f080023
-int id imgcancelbtn 0x7f080042
-int id imguploadbtn 0x7f080041
+int id imageview 0x7f080042
+int id linear_layout 0x7f080040
 int id listMode 0x7f080009
 int id list_item 0x7f080025
 int id middle 0x7f080015
@@ -397,11 +395,11 @@ int id showTitle 0x7f080011
 int id split_action_bar 0x7f080007
 int id submit_area 0x7f08003c
 int id tabMode 0x7f08000b
-int id tablel 0x7f080040
+int id take_photo 0x7f080041
 int id title 0x7f080027
 int id up 0x7f080008
 int id useLogo 0x7f080012
-int id webView1 0x7f080043
+int id webView1 0x7f08003f
 int id withText 0x7f08001a
 int id wrap_content 0x7f08001d
 int integer abc_max_action_buttons 0x7f090000
@@ -452,6 +450,7 @@ int string action_settings 0x7f0a0010
 int string app_name 0x7f0a0011
 int string button_send 0x7f0a0012
 int string hello_world 0x7f0a0013
+int string uploaded 0x7f0a0014
 int style AppBaseTheme 0x7f0b0000
 int style AppTheme 0x7f0b0001
 int style Base_TextAppearance_AppCompat 0x7f0b0002

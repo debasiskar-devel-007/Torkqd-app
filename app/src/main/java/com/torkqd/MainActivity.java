@@ -20,6 +20,7 @@ import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
+import android.widget.Button;
 
 import java.lang.reflect.Method;
 
@@ -30,6 +31,7 @@ public class MainActivity extends Activity implements LocationListener {
 	private ValueCallback<Uri> mUploadMessage;
 	private final static int FILECHOOSER_RESULTCODE = 1;
 	private final static int GPS_RESULTCODE = 0;
+    private Button btn1;
     ProgressDialog progressDialog;
 
 	@Override
@@ -102,6 +104,7 @@ public class MainActivity extends Activity implements LocationListener {
 
         startActivity(intent);
     }
+
 
     public void onLocationChanged(Location location) {
 

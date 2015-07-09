@@ -1,13 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:background="#FFFFFF" >
 
-    <Button
-        android:id="@+id/btnCapture"
+    <RelativeLayout
+        android:id="@+id/imguploadtbar"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="#000000" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="Upload Picture"
+            android:textColor="#FFFFFF"
+            android:textSize="18dip" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Camera" />
+        android:layout_below="@+id/imguploadtbar"
+        android:layout_centerInParent="true"
+        android:src="@android:drawable/alert_dark_frame" />
 
-</LinearLayout>
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#808080"
+        android:orientation="horizontal"
+        android:stretchColumns="*" >
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/imguploadbtn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:text="Upload" />
+
+            <Button
+                android:id="@+id/imgcancelbtn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:text="Cancel" />
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

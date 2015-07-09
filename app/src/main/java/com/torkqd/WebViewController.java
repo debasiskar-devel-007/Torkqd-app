@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.util.Log;
-import android.view.View;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JsResult;
 import android.webkit.SslErrorHandler;
@@ -15,17 +14,14 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TableLayout;
 
 public class WebViewController extends WebViewClient {
 
     private static final String LOG_TAG = "test";
     ProgressDialog progressDialog;
     private WebView myWebView;
-    private Button btn,btn1;
-    private TableLayout tbale;
-    private ImageView imgv;
+    private Button btn1;
+
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -33,16 +29,30 @@ public class WebViewController extends WebViewClient {
         if(url.contains("http://torqkd.com/upload"))
         {
 
-            myWebView = (WebView) view.findViewById(R.id.webView1);
-            btn = (Button) view.findViewById(R.id.imgcancelbtn);
+            /*myWebView = (WebView) view.findViewById(R.id.webView1);
+            myWebView.setVisibility(View.INVISIBLE);*/
+            Context context = view.getContext();
+            Intent cameraintent = new Intent(context, cameraActivity.class);
+
+            // Launch default browser
+            context.startActivity(cameraintent);
+            //btn1 = (Button) findViewById(R.id.btn1);
+            //btn1.setVisibility(View.INVISIBLE);
+            //MainActivity myActivity = new MainActivity();
+            //myActivity.showButton();
+
+
+           // imgv.setVisibility(View.VISIBLE);
+
+           /* btn = (Button) view.findViewById(R.id.imgcancelbtn);
             btn1 = (Button) view.findViewById(R.id.imguploadbtn);
             tbale = (TableLayout) view.findViewById(R.id.tablel);
             imgv = (ImageView) view.findViewById(R.id.ImageView);
-            myWebView.setVisibility(View.INVISIBLE);
+
             btn.setVisibility(View.VISIBLE);
             btn1.setVisibility(View.VISIBLE);
             tbale.setVisibility(View.VISIBLE);
-            imgv.setVisibility(View.VISIBLE);
+            imgv.setVisibility(View.VISIBLE);*/
 
             return true ;
 

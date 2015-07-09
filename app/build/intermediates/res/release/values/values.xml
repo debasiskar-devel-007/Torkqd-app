@@ -165,6 +165,7 @@
     <string name="app_name">Torkqd</string>
     <string name="button_send">button_send</string>
     <string name="hello_world">Hello world!</string>
+    <string name="uploaded"/>
     <!-- From: file:/F:/Torkqd/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
