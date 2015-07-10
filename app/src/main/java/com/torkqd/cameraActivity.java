@@ -25,14 +25,17 @@ import android.widget.Toast;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -235,9 +238,8 @@ public class cameraActivity extends Activity {
 
             bfo = new BitmapFactory.Options();
             bfo.inSampleSize = 2;
-            // bitmapOrg =
-            // BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()
-            // + "/" + customImage, bfo);
+            /*bitmapOrg = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()
+             + "/" + customImage, bfo);*/
 
             bao = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 90, bao);
@@ -247,12 +249,38 @@ public class cameraActivity extends Activity {
             nameValuePairs.add(new BasicNameValuePair("image", ba1));
             nameValuePairs.add(new BasicNameValuePair("cmd", "image_android"));
             Log.v("log_tag", System.currentTimeMillis() + ".jpg");
+
+            Toast.makeText(getApplicationContext(), "Unknown path",
+                    Toast.LENGTH_LONG).show();
+            MultipartEntity reqEntity = new MultipartEntity();
+            FileBody bin = new FileBody(new File("C:/ABC.txt"));
+            try {
+                reqEntity.addPart("IMG", new StringBody(ba1));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            //reqEntity.addPart("fileup1", comment);
+
+            try {
+                reqEntity.addPart("ONE", new StringBody("11111111"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            try {
+                reqEntity.addPart("TWO", new StringBody("222222222"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+
+
             try {
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new
                         // Here you need to put your server file address
-                        HttpPost("http://www.influxiq.com/mail1.php");
-                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                        HttpPost("http://torqkd.com/user/ajs/AddTempTable");
+               // httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                httppost.setEntity(reqEntity);
                 HttpResponse response = httpclient.execute(httppost);
                 HttpEntity entity = response.getEntity();
                 is = entity.getContent();
