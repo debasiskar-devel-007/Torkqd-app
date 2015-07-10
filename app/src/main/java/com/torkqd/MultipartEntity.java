@@ -2,11 +2,11 @@ package com.torkqd;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.message.BasicHeader;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -93,9 +93,9 @@ public class MultipartEntity implements HttpEntity {
         }
     }
 
-    public void addPart(final String key, final File value) {
+    public void addPart(final String key, final StringBody value) {
         try {
-            addPart(key, value.getName(), new FileInputStream(value));
+            addPart(key, value.toString(), new FileInputStream(String.valueOf(value)));
         } catch (final FileNotFoundException e) {
 
         }

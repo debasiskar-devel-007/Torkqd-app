@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -24,21 +25,24 @@ import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+//import org.apache.http.entity.mime.MultipartEntity;
 
 
 public class cameraActivity extends Activity {
@@ -48,11 +52,22 @@ public class cameraActivity extends Activity {
     private Button upload, cancel;
     private Bitmap bitmap;
     private ProgressDialog dialog;
+    private String deviceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.camera_activity);
+
+        deviceId = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        //Toast.makeText(this, deviceId, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
 
         //super.setNavigationVisibility(View.GONE, View.GONE);
 
@@ -242,35 +257,29 @@ public class cameraActivity extends Activity {
              + "/" + customImage, bfo);*/
 
             bao = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bao);
             byte[] ba = bao.toByteArray();
+
             String ba1 = Base64.encodeToString(ba, Base64.DEFAULT);
+            is=new ByteArrayInputStream(bao.toByteArray());
             ArrayList<BasicNameValuePair> nameValuePairs = new ArrayList<BasicNameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("image", ba1));
             nameValuePairs.add(new BasicNameValuePair("cmd", "image_android"));
             Log.v("log_tag", System.currentTimeMillis() + ".jpg");
 
-            Toast.makeText(getApplicationContext(), "Unknown path",
-                    Toast.LENGTH_LONG).show();
+            /*Toast.makeText(getApplicationContext(), "Unknown path",
+                    Toast.LENGTH_LONG).show();*/
             MultipartEntity reqEntity = new MultipartEntity();
-            FileBody bin = new FileBody(new File("C:/ABC.txt"));
-            try {
-                reqEntity.addPart("IMG", new StringBody(ba1));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            //reqEntity.addPart("fileup1", comment);
 
-            try {
-                reqEntity.addPart("ONE", new StringBody("11111111"));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            try {
-                reqEntity.addPart("TWO", new StringBody("222222222"));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+            reqEntity.addPart("myFile",
+                    deviceId+ ".jpg", is);
+
+            //FileBody bin = new FileBody(new File("C:/ABC.txt"));
+
+
+
+
+
 
 
 
@@ -279,7 +288,7 @@ public class cameraActivity extends Activity {
                 HttpPost httppost = new
                         // Here you need to put your server file address
                         HttpPost("http://torqkd.com/user/ajs/AddTempTable");
-               // httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                // httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 httppost.setEntity(reqEntity);
                 HttpResponse response = httpclient.execute(httppost);
                 HttpEntity entity = response.getEntity();

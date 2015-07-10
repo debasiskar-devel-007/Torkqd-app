@@ -58,6 +58,20 @@
         <dex dex="D:\Torkqd\app\build\intermediates\pre-dexed\debug\classes-db456c3adc7d128634be7852dce51f4fcbf60631.jar" />
     </item>
     <item
+        jar="C:\Users\KTA-PC 21\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpmime\4.2.3\118ae1bc7f3aeeddfe564f0edfd79c11d09d17d1\httpmime-4.2.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="118ae1bc7f3aeeddfe564f0edfd79c11d09d17d1">
+        <dex dex="F:\Torkqd\app\build\intermediates\pre-dexed\release\httpmime-4.2.3-4954d8491048ec8f96e129bbe559ff4a2f3d096c.jar" />
+    </item>
+    <item
+        jar="C:\Users\KTA-PC 21\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.2.2\b76bee23cd3f3ee9b98bc7c2c14670e821ddbbfd\httpcore-4.2.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b76bee23cd3f3ee9b98bc7c2c14670e821ddbbfd">
+        <dex dex="F:\Torkqd\app\build\intermediates\pre-dexed\release\httpcore-4.2.2-95c686d4a000af8dba7273f0b86ee648957c02cc.jar" />
+    </item>
+    <item
         jar="G:\Torkqd\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="22.0.1"

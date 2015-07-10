@@ -33,6 +33,7 @@ public class MainActivity extends Activity implements LocationListener {
 	private final static int GPS_RESULTCODE = 0;
     private Button btn1;
     ProgressDialog progressDialog;
+    private String deviceId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,64 @@ public class MainActivity extends Activity implements LocationListener {
 		myWebView = (WebView) findViewById(R.id.webView1);
 
         myWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
+
+
+
+
+
+
+
+
+
+
+
+        deviceId = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+       // Toast.makeText(this, deviceId, Toast.LENGTH_SHORT).show();
+
+        //myWebView.loadUrl("javascript:add_userdevice_with_session(" + deviceId + ")");
+
+
+
+
+       /* String postReceiverUrl = "http://torqkd.com/user/ajs/add_userdevice_with_session";
+        //Log.v(TAG, "postURL: " + postReceiverUrl);
+
+// HttpClient
+        HttpClient httpClient = new DefaultHttpClient();
+
+// post header
+        HttpPost httpPost = new HttpPost(postReceiverUrl);
+
+// add your data
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        nameValuePairs.add(new BasicNameValuePair("deviceid", deviceId));
+        nameValuePairs.add(new BasicNameValuePair("sessionid", "Dalisay"));
+
+
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+// execute HTTP post request
+        HttpResponse response = null;
+        try {
+            response = httpClient.execute(httpPost);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        HttpEntity resEntity = response.getEntity();*/
+
+
+
+
+
+
+
+
+
 
 
 
@@ -116,9 +175,15 @@ public class MainActivity extends Activity implements LocationListener {
         // Getting longitude of the current location
         double longitude = location.getLongitude();
 
+        deviceId = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        // Toast.makeText(this, deviceId, Toast.LENGTH_SHORT).show();
 
         myWebView.loadUrl("javascript:setValue("+latitude+")");
         myWebView.loadUrl("javascript:setValuelong("+longitude+")");
+
+        myWebView.loadUrl("javascript:add_userdevice_with_session('"+deviceId +"')");
+
 
         /*Context context = myWebView.getContext();
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
@@ -173,10 +238,10 @@ public class MainActivity extends Activity implements LocationListener {
 					: intent.getData();
 			mUploadMessage.onReceiveValue(result);
 			mUploadMessage = null;
-		}
-	}
+        }
+    }
 
-	private void launchWebview() {
+    private void launchWebview() {
         myWebView.setWebViewClient(new WebViewController());
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
