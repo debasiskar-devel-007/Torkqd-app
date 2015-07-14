@@ -3,7 +3,6 @@ package com.torkqd;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -32,13 +31,22 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,7 +55,7 @@ import java.util.List;
 //import org.apache.http.entity.mime.MultipartEntity;
 
 
-public class cameraActivity extends Activity {
+public class videoActivity extends Activity {
 
     private Uri outputFileUri;
     private ImageView imgView;
@@ -61,7 +69,8 @@ public class cameraActivity extends Activity {
 
     public static final int MEDIA_TYPE_VIDEO = 2;
     private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
-    public static cameraActivity ActivityContext =null;
+    public static videoActivity ActivityContext =null;
+    String fileuri=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +87,8 @@ public class cameraActivity extends Activity {
 
 
 
+
+
         //super.setNavigationVisibility(View.GONE, View.GONE);
 
         imgView = (ImageView) findViewById(R.id.ImageView);
@@ -87,29 +98,43 @@ public class cameraActivity extends Activity {
         upload.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (bitmap == null) {
+                //if (bitmap == null) {
                     Toast.makeText(getApplicationContext(),
                             "Please select image", Toast.LENGTH_SHORT).show();
-                } else {
-                    dialog = ProgressDialog.show(cameraActivity.this,
-                            "Uploading", "Please wait...", true);
-                    new ImageUploadTask().execute();
+
+
+                try {
+                    // Set your file path here
+                    FileInputStream fstrm = new FileInputStream(fileuri);
+
+                    // Set your server page url (and the file title/description)
+                    HttpfileUpload hfu = new HttpfileUpload("http://torqkd.com/user/ajs/uploadvideo", "my file title","my file description");
+
+                    hfu.Send_Now(fstrm);
+
+                } catch (FileNotFoundException e) {
+                    // Error: File not found
                 }
+
+
+
+
+
+
+               // } else {
+
+               // }
             }
         });
 
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Context context = v.getContext();
-                Intent cameraintent = new Intent(context, upload.class);
-
-                // Launch default browser
-                context.startActivity(cameraintent);
+                videoActivity.this.finish();
             }
         });
 
-        openImageIntent();
-        //openVideointent();
+        //openImageIntent();
+        openVideointent();
 
     }
     private void openVideointent(){
@@ -122,7 +147,10 @@ public class cameraActivity extends Activity {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 
         // set the video image quality to high
-        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+
+        Toast.makeText(getApplicationContext(), fileuri,
+                Toast.LENGTH_LONG).show();
+                 intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
 
         // start the Video Capture Intent
         startActivityForResult(intent, CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE);
@@ -164,7 +192,7 @@ public class cameraActivity extends Activity {
         // Create a media file name
 
         // For unique file name appending current timeStamp with file name
-        java.util.Date date= new java.util.Date();
+        Date date= new Date();
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
                 .format(date.getTime());
 
@@ -175,6 +203,16 @@ public class cameraActivity extends Activity {
             // For unique video file name appending current timeStamp with file name
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
                     "VID_"+ timeStamp + ".mp4");
+
+            Toast.makeText(getApplicationContext(), mediaStorageDir.getPath() + File.separator +
+                            "VID_"+ timeStamp + ".mp4"+"Path",
+                    Toast.LENGTH_LONG).show();
+            String filepath= mediaStorageDir.getPath() + File.separator +
+                    "VID_"+ timeStamp + ".mp4";
+            fileuri =filepath;
+            //startActivityForResult(filepath, 0);
+
+            //upLoad2Server(filepath);
 
         } else {
             return null;
@@ -203,7 +241,7 @@ public class cameraActivity extends Activity {
         // Camera.
         final List<Intent> cameraIntents = new ArrayList<Intent>();
         final Intent captureIntent = new Intent(
-                android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                MediaStore.ACTION_IMAGE_CAPTURE);
         final PackageManager packageManager = getPackageManager();
         final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
         for (ResolveInfo res : listCam) {
@@ -237,8 +275,25 @@ public class cameraActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Uri selectedImageUri = null;
         String filePath = null;
+        //upLoad2Server(fileuri);
+        String tmpStr10 = String.valueOf(resultCode);
 
-        if (resultCode == RESULT_OK) {
+        Log.e("resultcode", tmpStr10);
+
+        //return;
+
+        if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE) {
+            Log.e("selectedImageUri", "121-65");
+            //upLoad2Server(fileuri);
+            Toast.makeText(getApplicationContext(), fileuri,
+                    Toast.LENGTH_LONG).show();
+
+           /* if (resultCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE)
+            {
+                upLoad2Server(fileuri);
+
+                return;
+            }*/
             if (requestCode == 0) {
                 final boolean isCamera;
                 if (data == null) {
@@ -249,7 +304,7 @@ public class cameraActivity extends Activity {
                         isCamera = false;
                     } else {
                         isCamera = action
-                                .equals(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                                .equals(MediaStore.ACTION_IMAGE_CAPTURE);
                     }
                 }
 
@@ -283,6 +338,13 @@ public class cameraActivity extends Activity {
                 }
                 Log.e("selectedImageUri", selectedImageUri.toString());
             }
+        }
+        else
+        {
+
+            //upLoad2Server(fileuri);
+            //return;
+
         }
 
         if (selectedImageUri != null) {
@@ -327,6 +389,128 @@ public class cameraActivity extends Activity {
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void upLoad2Server(String sourceFileUri) {
+        String upLoadServerUri = "http://torqkd.com/user/ajs/uploadvideo";
+        // String [] string = sourceFileUri;
+        String fileName = sourceFileUri;
+
+        HttpURLConnection conn = null;
+        DataOutputStream dos = null;
+        DataInputStream inStream = null;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+        int bytesRead, bytesAvailable, bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
+        String responseFromServer = "";
+
+        Toast.makeText(getApplicationContext(), "Path",
+                Toast.LENGTH_LONG).show();
+
+        File sourceFile = new File(sourceFileUri);
+        if (!sourceFile.isFile()) {
+            Log.e("Huzza", "Source File Does not exist");
+            //return 0;
+        }
+        int serverResponseCode = 0;
+        try { // open a URL connection to the Servlet
+            FileInputStream fileInputStream = new FileInputStream(sourceFile);
+            URL url = new URL(upLoadServerUri);
+            conn = (HttpURLConnection) url.openConnection(); // Open a HTTP  connection to  the URL
+            conn.setDoInput(true); // Allow Inputs
+            conn.setDoOutput(true); // Allow Outputs
+            conn.setUseCaches(false); // Don't use a Cached Copy
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Connection", "Keep-Alive");
+            conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+            conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+            conn.setRequestProperty("uploaded_file", fileName);
+            dos = new DataOutputStream(conn.getOutputStream());
+
+            dos.writeBytes(twoHyphens + boundary + lineEnd);
+            dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""+ fileName + "\"" + lineEnd);
+            dos.writeBytes(lineEnd);
+
+            bytesAvailable = fileInputStream.available(); // create a buffer of  maximum size
+            Log.i("Huzza", "Initial .available : " + bytesAvailable);
+
+            bufferSize = Math.min(bytesAvailable, maxBufferSize);
+            buffer = new byte[bufferSize];
+
+            // read file and write it into form...
+            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+            while (bytesRead > 0) {
+                dos.write(buffer, 0, bufferSize);
+                bytesAvailable = fileInputStream.available();
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+            }
+
+            // send multipart form data necesssary after file data...
+            dos.writeBytes(lineEnd);
+            dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+            // Responses from the server (code and message)
+            serverResponseCode = conn.getResponseCode();
+            String serverResponseMessage = conn.getResponseMessage();
+
+            Log.i("Upload file to server", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
+            // close streams
+            Log.i("Upload file to server", fileName + " File is written");
+            fileInputStream.close();
+            dos.flush();
+            dos.close();
+        } catch (MalformedURLException ex) {
+            ex.printStackTrace();
+            Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//this block will give the response of upload link
+        try {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn
+                    .getInputStream()));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                Log.i("Huzza", "RES Message: " + line);
+            }
+            rd.close();
+        } catch (IOException ioex) {
+            Log.e("Huzza", "error: " + ioex.getMessage(), ioex);
+        }
+       // return serverResponseCode;  // like 200 (Ok)
+
+    } // end upLoad2Server
+
+
+
+
+
+
+
+
+
 
 
 
@@ -429,12 +613,6 @@ public class cameraActivity extends Activity {
                 HttpResponse response = httpclient.execute(httppost);
                 HttpEntity entity = response.getEntity();
                 is = entity.getContent();
-
-                Context context = cameraActivity.this;
-                Intent cameraintent = new Intent(context, MainActivity.class);
-
-                // Launch default browser
-                context.startActivity(cameraintent);
                 Log.v("log_tag", "In the try Loop");
             } catch (Exception e) {
                 Log.v("log_tag", "Error in http connection " + e.toString());

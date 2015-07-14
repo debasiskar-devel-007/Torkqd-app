@@ -2,6 +2,8 @@ package com.torkqd;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.message.BasicHeader;
 
@@ -24,7 +26,7 @@ public class MultipartEntity implements HttpEntity {
     boolean isSetLast = false;
     boolean isSetFirst = false;
 
-    public MultipartEntity() {
+    public MultipartEntity(HttpMultipartMode browserCompatible) {
         this.boundary = System.currentTimeMillis() + "";
     }
 
@@ -51,13 +53,13 @@ public class MultipartEntity implements HttpEntity {
         isSetLast = true;
     }
 
-    public void addPart(final String key, final String value) {
+    public void addPart(final String key, final FileBody value) {
         writeFirstBoundaryIfNeeds();
         try {
             out.write(("Content-Disposition: form-data; name=\"" +key+"\"\r\n").getBytes());
             out.write("Content-Type: text/plain; charset=UTF-8\r\n".getBytes());
             out.write("Content-Transfer-Encoding: 8bit\r\n\r\n".getBytes());
-            out.write(value.getBytes());
+            //out.write(value.getBytes());
             out.write(("\r\n--" + boundary + "\r\n").getBytes());
         } catch (final IOException e) {
 

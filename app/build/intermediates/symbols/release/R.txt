@@ -438,7 +438,8 @@ int layout abc_simple_dropdown_hint 0x7f030016
 int layout activity_main 0x7f030017
 int layout activity_upload 0x7f030018
 int layout camera_activity 0x7f030019
-int layout support_simple_spinner_dropdown_item 0x7f03001a
+int layout choose_uploader 0x7f03001a
+int layout support_simple_spinner_dropdown_item 0x7f03001b
 int menu main 0x7f0c0000
 int string abc_action_bar_home_description 0x7f0a0000
 int string abc_action_bar_home_description_format 0x7f0a0001

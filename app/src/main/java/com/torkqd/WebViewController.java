@@ -32,7 +32,7 @@ public class WebViewController extends WebViewClient {
             /*myWebView = (WebView) view.findViewById(R.id.webView1);
             myWebView.setVisibility(View.INVISIBLE);*/
             Context context = view.getContext();
-            Intent cameraintent = new Intent(context, cameraActivity.class);
+            Intent cameraintent = new Intent(context, upload.class);
 
             // Launch default browser
             context.startActivity(cameraintent);
