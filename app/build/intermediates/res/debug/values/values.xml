@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- From: file:/F:/Torkqd/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string-array name="image_ids">
+        <item>@drawable/image_1</item>
+
+    </string-array>
     <!-- From: file:/F:/Torkqd/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>

@@ -28,8 +28,12 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -38,7 +42,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,12 +50,11 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-//import org.apache.http.entity.mime.MultipartEntity;
 
 
 public class videoActivity extends Activity {
@@ -104,24 +106,15 @@ public class videoActivity extends Activity {
 
 
                 try {
-                    // Set your file path here
-                    FileInputStream fstrm = new FileInputStream(fileuri);
-
-                    // Set your server page url (and the file title/description)
-                    HttpfileUpload hfu = new HttpfileUpload("http://torqkd.com/user/ajs/uploadvideo", "my file title","my file description");
-
-                    hfu.Send_Now(fstrm);
-
-                } catch (FileNotFoundException e) {
-                    // Error: File not found
+                    uploadVideo(fileuri);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
 
-
-
-
-
-               // } else {
+                // } else {
 
                // }
             }
@@ -137,6 +130,46 @@ public class videoActivity extends Activity {
         openVideointent();
 
     }
+
+
+
+
+    private void uploadVideo(String videoPath) throws ParseException, IOException {
+
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://torqkd.com/user/ajs/uploadvideo");
+
+        FileBody filebodyVideo = new FileBody(new File(videoPath));
+        StringBody title = new StringBody("Filename: " + videoPath);
+        StringBody description = new StringBody("This is a description of the video");
+
+        MultipartEntity reqEntity = new MultipartEntity();
+        reqEntity.addPart("videoFile", filebodyVideo);
+        reqEntity.addPart("title", title);
+        reqEntity.addPart("description", description);
+        httppost.setEntity(reqEntity);
+
+        // DEBUG
+        System.out.println( "executing request " + httppost.getRequestLine( ) );
+        HttpResponse response = httpclient.execute( httppost );
+        HttpEntity resEntity = response.getEntity( );
+
+        // DEBUG
+        System.out.println(response.getStatusLine());
+        if (resEntity != null) {
+            System.out.println( EntityUtils.toString(resEntity) );
+        } // end if
+
+        if (resEntity != null) {
+            resEntity.consumeContent( );
+        } // end if
+
+        httpclient.getConnectionManager( ).shutdown();
+    } // end of uploadVideo( )
+
+
+
+
     private void openVideointent(){
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
 
@@ -591,8 +624,8 @@ public class videoActivity extends Activity {
                     Toast.LENGTH_LONG).show();*/
             MultipartEntity reqEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
 
-            reqEntity.addPart("myFile",
-                    deviceId+ ".jpg", is);
+            /*reqEntity.addPart("myFile",
+                    deviceId+ ".jpg", is);*/
 
             //FileBody bin = new FileBody(new File("C:/ABC.txt"));
 

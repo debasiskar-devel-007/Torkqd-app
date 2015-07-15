@@ -9,4 +9,11 @@
     <string name="btnRecordVideo" />
     <string name="uploaded" />
     <string name="take_photo" />
+    <string-array name="image_ids">
+        <item>@drawable/image_1</item>
+
+    </string-array>
+
+
+
 </resources>

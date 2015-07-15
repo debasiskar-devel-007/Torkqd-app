@@ -4,6 +4,22 @@
     android:layout_height="fill_parent"
     android:background="#FFFFFF" >
 
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:columnWidth="100dp"
+        android:drawSelectorOnTop="true"
+        android:gravity="bottom"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="5dp"
+        android:focusable="true"
+        android:scaleType="fitCenter"
+       android:layout_marginTop="80dp"
+        android:clickable="true"/>
+
     <RelativeLayout
         android:id="@+id/imguploadtbar"
         android:layout_width="fill_parent"
@@ -16,8 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
-            android:text="Choose what to upload "
+            android:text="Choose Image / Video  "
             android:textColor="#FFFFFF"
+            android:layout_gravity="top|center"
             android:textSize="18dip" />
     </RelativeLayout>
 
@@ -33,12 +50,16 @@
 
         <TableRow>
 
+
+
+
             <Button
                 android:id="@+id/imguploadbtn"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dip"
                 android:onClick="opencamera"
+                android:layout_gravity="bottom|center"
                 android:text="Upload Image" />
 
             <Button
@@ -47,8 +68,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dip"
                 android:onClick="openvideo"
+                android:layout_gravity="bottom|center"
                 android:text="Upload Video" />
         </TableRow>
     </TableLayout>
+
+
+
 
 </RelativeLayout>

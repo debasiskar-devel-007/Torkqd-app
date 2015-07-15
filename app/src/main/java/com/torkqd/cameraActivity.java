@@ -53,6 +53,7 @@ public class cameraActivity extends Activity {
     private ImageView imgView;
     private Button upload, cancel;
     private Bitmap bitmap;
+    private Bitmap bitmap1;
     private ProgressDialog dialog;
     private String deviceId;
     private Uri fileUri;
@@ -75,7 +76,8 @@ public class cameraActivity extends Activity {
 
 
 
-
+        bitmap1 = getIntent().getParcelableExtra("image");
+        bitmap=bitmap1;
 
 
         //super.setNavigationVisibility(View.GONE, View.GONE);
@@ -84,10 +86,17 @@ public class cameraActivity extends Activity {
         upload = (Button) findViewById(R.id.imguploadbtn);
         cancel = (Button) findViewById(R.id.imgcancelbtn);
 
+        imgView.setImageBitmap(bitmap1);
+       // Context context = this.getContext();
+        Intent cameraintent = new Intent(this, upload.class);
+
+        // Launch default browser
+        startActivity(cameraintent);
+
         upload.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if (bitmap == null) {
+                if (bitmap == null && bitmap1==null) {
                     Toast.makeText(getApplicationContext(),
                             "Please select image", Toast.LENGTH_SHORT).show();
                 } else {
